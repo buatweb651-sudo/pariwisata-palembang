@@ -1,0 +1,79 @@
+@extends('layouts.app')
+
+@section('title', 'Destinasi Wisata')
+
+@section('content')
+
+<!-- Hero Section -->
+<div class="bg-primary text-white text-center py-5 mb-5">
+    <div class="container">
+        <h1 class="fw-bold">Destinasi Wisata Pekanbaru</h1>
+        <p class="lead">Temukan tempat wisata terbaik di Pekanbaru dan sekitarnya</p>
+    </div>
+</div>
+
+<div class="container mb-5">
+
+    <!-- Detail Destinasi 1 -->
+    <div class="row g-0 mb-5 shadow-sm rounded overflow-hidden">
+        <div class="col-md-5">
+            <img src="{{ asset('images/destinasi/taman-bunga.jpg') }}" class="w-100 h-100" style="object-fit: cover;" alt="Taman Bunga Nasional">
+        </div>
+        <div class="col-md-7">
+            <div class="p-4">
+                <h3 class="text-pink fw-bold">Taman Bunga Nasional</h3>
+                <p>Taman bunga indah dengan berbagai jenis tanaman hias, cocok untuk foto dan bersantai bersama keluarga.</p>
+                <ul class="list-unstyled mb-0">
+                    <li class="mb-2"><i class="bi bi-geo-alt-fill text-pink me-2"></i><strong>Lokasi:</strong> Jl. Melati No. 10, Pekanbaru</li>
+                    <li class="mb-2"><i class="bi bi-clock-fill text-pink me-2"></i><strong>Jam Operasional:</strong> Setiap hari, 08.00 - 17.00 WIB</li>
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-pink me-2"></i><strong>Fasilitas:</strong> Toilet umum, area parkir luas, gazebo, spot foto</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detail Destinasi 2 -->
+    <div class="row g-0 mb-5 shadow-sm rounded overflow-hidden">
+        <div class="col-md-5">
+            <img src="{{ asset('images/destinasi/masjid-agung.jpg') }}" class="w-100 h-100" style="object-fit: cover;" alt="Masjid Agung An-Nur">
+        </div>
+        <div class="col-md-7">
+            <div class="p-4">
+                <h3 class="text-pink fw-bold">Masjid Agung An-Nur</h3>
+                <p>Masjid megah yang menjadi ikon Kota Pekanbaru dengan arsitektur khas Timur Tengah.</p>
+                <ul class="list-unstyled mb-0">
+                    <li class="mb-2"><i class="bi bi-geo-alt-fill text-pink me-2"></i><strong>Lokasi:</strong> Jl. Hang Tuah, Pekanbaru</li>
+                    <li class="mb-2"><i class="bi bi-clock-fill text-pink me-2"></i><strong>Jam Operasional:</strong> Setiap hari, 05.00 - 21.00 WIB (di luar jam ibadah)</li>
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-pink me-2"></i><strong>Fasilitas:</strong> Area parkir, tempat wudhu, perpustakaan, area foto</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detail Destinasi 3 -->
+    <div class="row g-0 mb-5 shadow-sm rounded overflow-hidden">
+        <div class="col-md-5">
+            <img src="{{ asset('images/destinasi/sungai-siak.jpg') }}" class="w-100 h-100" style="object-fit: cover;" alt="Sungai Siak">
+        </div>
+        <div class="col-md-7">
+            <div class="p-4">
+                <h3 class="text-pink fw-bold">Sungai Siak</h3>
+                <p>Sungai bersejarah yang membelah Kota Pekanbaru, cocok untuk wisata susur sungai dan menikmati sunset.</p>
+                <ul class="list-unstyled mb-0">
+                    <li class="mb-2"><i class="bi bi-geo-alt-fill text-pink me-2"></i><strong>Lokasi:</strong> Tepian Sungai Siak, Pekanbaru</li>
+                    <li class="mb-2"><i class="bi bi-clock-fill text-pink me-2"></i><strong>Jam Operasional:</strong> Setiap hari, 16.00 - 22.00 WIB (susur sungai)</li>
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-pink me-2"></i><strong>Fasilitas:</strong> Dermaga, perahu wisata, area kuliner tepi sungai</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@endsection
+
+
+<a href="{{ route('destinasi.detail',2) }}" class="btn btn-pink w-100 d-flex align-items-center justify-content-center gap-2">
+                        Lihat Detail
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
