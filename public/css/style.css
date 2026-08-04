@@ -1061,3 +1061,208 @@ body {
     color: #FFD700;
     border-color: #8B0000;
 }
+
+/* ===== FORM PENCARIAN DESTINASI ===== */
+.input-cari-tema {
+  border: 1px solid #EAD08C;
+  padding: 10px 16px;
+  font-size: 14px;
+}
+
+.input-cari-tema:focus {
+  outline: none;
+  border-color: #B22222;
+  box-shadow: 0 0 0 3px rgba(178, 34, 34, 0.15);
+  z-index: 2;
+}
+
+.btn-cari-tema {
+  background-color: #B22222;
+  color: #ffffff;
+  border: 1px solid #B22222;
+  padding: 10px 24px;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-cari-tema:hover {
+  background-color: #8B0000;
+  color: #ffffff;
+}
+
+/* ===== PAGINATION ===== */
+.pagination-tema .pagination {
+  gap: 6px;
+}
+
+.pagination-tema .page-link {
+  color: #B22222;
+  border: 1px solid #EAD08C;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination-tema .page-link:hover {
+  background-color: #FFF3D6;
+  border-color: #B22222;
+  color: #8B0000;
+}
+
+.pagination-tema .page-item.active .page-link {
+  background-color: #B22222;
+  border-color: #B22222;
+  color: #FFD700;
+}
+
+.pagination-tema .page-item.disabled .page-link {
+  color: #c9b28a;
+  background-color: #ffffff;
+  border-color: #EAD08C;
+}
+
+:root {
+    --maroon: #6b0f1a;
+    --maroon-dark: #4d0a12;
+    --gold: #f0b429;
+    --gold-dark: #d99a1b;
+}
+
+.text-maroon {
+    color: var(--maroon);
+}
+
+/* Tombol utama (Tambah User) */
+.btn-gold {
+    background-color: var(--gold);
+    color: #3a2600;
+    border: none;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+}
+.btn-gold:hover {
+    background-color: var(--gold-dark);
+    color: #3a2600;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Tombol Edit */
+.btn-outline-maroon {
+    color: var(--maroon);
+    border: 1px solid var(--maroon);
+    transition: all 0.2s ease-in-out;
+}
+.btn-outline-maroon:hover {
+    background-color: var(--maroon);
+    color: #fff;
+}
+
+/* Card pembungkus tabel */
+.user-card {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Header tabel */
+.user-table thead tr {
+    background-color: var(--maroon);
+}
+.user-table thead th {
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    padding: 14px 16px;
+}
+.user-table tbody td {
+    padding: 14px 16px;
+    border-color: #f0f0f0;
+}
+
+/* Efek hover baris tabel */
+.user-table tbody tr {
+    transition: background-color 0.15s ease-in-out;
+}
+.user-table tbody tr:hover {
+    background-color: #fff8e7; /* krem lembut, senada kuning keemasan */
+}
+
+/* Avatar inisial nama */
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--gold);
+    color: #3a2600;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Badge Role */
+.role-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+.role-admin {
+    background-color: var(--maroon);
+    color: #fff;
+}
+.role-user {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+/* Card form */
+.form-card {
+    border: none;
+    border-radius: 14px;
+    border-top: 4px solid var(--gold);
+    transition: box-shadow 0.2s ease-in-out;
+}
+.form-card:hover {
+    box-shadow: 0 8px 24px rgba(107, 15, 26, 0.12) !important;
+}
+
+.form-title {
+    color: var(--maroon);
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 10px;
+}
+.form-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 48px;
+    height: 3px;
+    background-color: var(--gold);
+    border-radius: 2px;
+}
+
+/* Input & select bertema */
+.themed-input {
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    padding: 10px 14px;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.themed-input:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(240, 180, 41, 0.25);
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--maroon-dark);
+    margin-bottom: 6px;
+}

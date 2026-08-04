@@ -12,6 +12,14 @@
 
     <section class="destinasi">
         <h2>Destinasi Unggulan</h2>
+        <form action="{{ route('destinasi') }}" method="GET" class="mb-4">
+    <div class="input-group">
+        <input type="text" name="cari" class="form-control input-cari-tema"
+               placeholder="Cari nama destinasi..." value="{{ $keyword ?? '' }}">
+        <button type="submit" class="btn btn-cari-tema">Cari</button>
+    </div>
+</form>
+
         <div class="kartu-container">
             @forelse ($destinasiList as $destinasi)
                 <?php
@@ -33,6 +41,11 @@
                 <p class="pesan-kosong">Belum ada destinasi tersedia.</p>
             @endforelse
         </div>
+        <div class="d-flex justify-content-center mt-4 pagination-tema">
+    {{ $destinasiList->appends(['cari' => $keyword])->links('pagination::bootstrap-5') }}
+</div>
+
+        
     </section>
 
     <section class="pengalaman-wisata">
