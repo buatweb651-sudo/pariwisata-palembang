@@ -10,6 +10,7 @@
 @section('content')
 
 <section class="hero">
+
     <?php
     $JamSekarang = date("H:i");
 
@@ -23,16 +24,63 @@
         $Ucapan = "Selamat Malam";
     }
     ?>
-    <h1><?php echo $Ucapan; ?>, Selamat Datang di <?php echo $NamaDaerah; ?></h1>
-    <p>Nikmati pesona kota yang tumbuh bersama Sungai Musi, menyimpan jejak sejarah Sriwijaya, serta menghadirkan kekayaan budaya dan kuliner yang menjadi ciri khas Palembang.</p>
+
+    <div class="hero-content">
+
+        <span class="hero-badge">
+            ✨ Jelajahi Pesona Kota Palembang
+        </span>
+
+        <h1>
+            {{ $Ucapan }}, Selamat Datang di {{ $NamaDaerah }}
+        </h1>
+
+        <p>
+            Nikmati pesona Sungai Musi, kemegahan Jembatan Ampera,
+            wisata sejarah Sriwijaya, serta kuliner legendaris yang
+            menjadi kebanggaan Kota Palembang.
+        </p>
+
+        <a href="{{ route('destinasi') }}" class="hero-button">
+            Jelajahi Destinasi
+        </a>
+
+    </div>
+
 </section>
 
-<section class="tentang">
-    <h2>Tentang Daerah Kami</h2>
-    <p>Palembang, Kota yang Penuh Cerita Palembang merupakan kota bersejarah di Sumatera Selatan yang identik dengan Sungai Musi, Jembatan Ampera, serta kekayaan kuliner dan budaya. Dari jejak kejayaan Sriwijaya hingga pesona wisata masa kini, Palembang menawarkan pengalaman yang menarik untuk dijelajahi.</p>
+
+
+<section class="statistik">
+    <div class="container">
+        <div class="row text-center">
+
+            <div class="col-md-4 mb-4">
+                <div class="stat-box">
+                  <h2>73+</h2>
+                    <p>Destinasi Wisata</p>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="stat-box">
+                    <h2>150+</h2>
+                    <p>Atraksi Menarik</p>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="stat-box">
+                    <h2>2M+</h2>
+                    <p>Pengunjung</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </section>
 
-<section class="destinasi">
+<section class="destinasi" id="destinasi">
     <h2>Destinasi Unggulan</h2>
     <div class="kartu-container">
         @foreach ($destinasiList as $destinasi)

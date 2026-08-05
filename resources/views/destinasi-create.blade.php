@@ -13,7 +13,7 @@
 <div class="container my-5">
 
     {{-- Breadcrumb navigasi (komponen bawaan Bootstrap) --}}
-    <nav aria-label="breadcrumb">
+   <nav class="pb-breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('beranda') }}">Beranda</a></li>
             <li class="breadcrumb-item"><a href="{{ route('destinasi') }}">Destinasi</a></li>
@@ -25,10 +25,17 @@
         <div class="col-lg-8">
 
             {{-- Card bawaan Bootstrap, bukan custom --}}
-            <div class="card shadow-sm">
-                <div class="card-body p-4">
+           <div class="card destination-card shadow">
+               <div class="destination-header">
+    <h2>
+        <i class="fa-solid fa-location-dot me-2"></i>
+        Tambah Destinasi Baru
+    </h2>
 
-                    <h2 class="card-title mb-4">Tambah Destinasi Baru</h2>
+    <p>Lengkapi informasi destinasi wisata.</p>
+</div>
+
+<div class="card-body p-4">
 
                     {{-- Tampilkan pesan error validasi kalau ada --}}
                     @if ($errors->any())
@@ -48,7 +55,7 @@
                             <label for="nama" class="form-label">Nama Destinasi</label>
                             <input
                                 type="text"
-                                class="form-control"
+                                class="form-control themed-input"
                                 id="nama"
                                 name="nama"
                                 value="{{ old('nama') }}"
@@ -123,10 +130,10 @@
                         </div>
 
                         <div class="d-flex gap-2">
-                            <button type="submit" class="btn btn-primary">
+                           <button type="submit" class="btn btn-gold">
                                 Simpan Destinasi
                             </button>
-                            <a href="{{ route('destinasi') }}" class="btn btn-outline-secondary">
+                            <a href="{{ route('destinasi') }}" class="btn btn-outline-maroon">
                                 Batal
                             </a>
                         </div>
