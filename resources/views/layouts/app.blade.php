@@ -45,26 +45,37 @@
     <footer class="footer-wisata">
     <div class="container">
         <div class="row footer-container gy-4">
+
             <div class="col-6 col-md-4 footer-col">
-                <h4>Wisata Contoh</h4>
-                <p>Menyajikan keindahan alam, budaya, dan kuliner khas daerah untuk setiap perjalanan wisata Anda.</p>
+                <h4>Wisata Palembang</h4>
+                <p>
+                    Menyajikan informasi destinasi wisata, sejarah,
+                    budaya, dan kuliner khas Kota Palembang untuk
+                    setiap perjalanan wisata Anda.
+                </p>
             </div>
+
             <div class="col-6 col-md-4 footer-col">
                 <h4>Navigasi</h4>
                 <ul>
                     <li><a href="{{ route('beranda') }}">Beranda</a></li>
                     <li><a href="{{ route('destinasi') }}">Destinasi</a></li>
-                    <li><a href="#tentang">Tentang</a></li>
-                    <li><a href="#kontak">Kontak</a></li>
+                    <li><a href="{{ route('tentang') }}">Tentang</a></li>
+                    <li><a href="{{ route('kontak') }}">Kontak</a></li>
                 </ul>
             </div>
+
             <div class="col-6 col-md-4 footer-col">
                 <h4>Hubungi Kami</h4>
-                <p>Email: info@wisatacontoh.com</p>
-                <p>WhatsApp: 0812-3456-7890</p>
+                <p>Email: informasi@wisatapalembang.co.id</p>
+                <p>WhatsApp: 0621-80581677</p>
             </div>
+
         </div>
-        <p class="footer-copy">&copy; 2026 Wisata Contoh. Dibuat untuk keperluan pelatihan pemrograman web pariwisata.</p>
+
+        <p class="footer-copy">
+            &copy; 2026 Wisata Palembang. Dibuat untuk keperluan pembelajaran pemrograman web pariwisata.
+        </p>
     </div>
 </footer>
 

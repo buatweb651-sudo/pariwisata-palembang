@@ -6,7 +6,7 @@
     <div class="container text-center">
         <h1>Tentang Kami</h1>
         <p>
-            Selamat datang di Taman Bunga Nusantara, destinasi wisata yang menghadirkan keindahan taman tematik dengan beragam koleksi bunga dari berbagai penjuru dunia. Kami berkomitmen memberikan pengalaman wisata yang nyaman, edukatif, dan berkesan bagi setiap pengunjung.
+            Selamat datang di website wisata Kota Palembang. Kami menghadirkan informasi mengenai destinasi wisata, sejarah, budaya, kuliner, dan berbagai tempat menarik yang dapat Anda kunjungi selama berada di Kota Palembang.
         </p>
     </div>
 </section>
@@ -72,7 +72,9 @@
     <div class="container text-center">
         <h2>Yuk, Jelajahi Palembang Bersama Kami!</h2>
         <p>Temukan destinasi terbaik dan rencanakan perjalanan wisatamu mulai dari sekarang.</p>
-        <a href="{{ route('destinasi') }}" class="btn-cta">Lihat Destinasi</a>
+        <a href="{{ route('destinasi') }}"          class="btn-hero">
+             Lihat Destinasi
+        </a>
     </div>
 </section>
 

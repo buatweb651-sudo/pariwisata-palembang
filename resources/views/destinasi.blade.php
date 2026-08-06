@@ -5,14 +5,37 @@
 @section('content')
 
     <section class="destinasi-banner">
-        <div class="container text-center">
-            <h1 class="fw-bold">Destinasi Unggulan</h1>
-        </div>
-    </section>
+    <div class="container text-center">
 
-    <section class="destinasi">
-        <h2>Destinasi Unggulan</h2>
-        <form action="{{ route('destinasi') }}" method="GET" class="mb-4">
+        <span class="banner-badge">
+            📍 Jelajahi Kota Palembang
+        </span>
+
+        <h1 class="fw-bold">
+            Temukan Destinasi <br>
+            Terbaik di Palembang
+        </h1>
+
+        <p>
+            Dari wisata sejarah, budaya, kuliner,
+            hingga panorama Sungai Musi,
+            semuanya siap menemani perjalananmu.
+        </p>
+
+        <a href="#daftar-destinasi" class="btn-hero">
+                Jelajahi Destinasi
+        </a>
+
+    </div>
+</section>
+
+   <section class="destinasi" id="daftar-destinasi">
+        <h2>Daftar Destinasi</h2>
+
+    <p class="sub-judul">
+    Cari dan temukan destinasi wisata terbaik di Kota Palembang.
+    </p>
+        <form action="{{ route('destinasi') }}" method="GET" class="mb-5">
     <div class="input-group">
         <input type="text" name="cari" class="form-control input-cari-tema"
                placeholder="Cari nama destinasi..." value="{{ $keyword ?? '' }}">
@@ -31,7 +54,11 @@
                     <img src="{{ asset('images/' . $destinasi->gambar) }}" alt="Foto {{ $destinasi->nama }}">
                     <h3>{{ $destinasi->nama }}</h3>
                     <p>{{ $destinasi->deskripsi }}</p>
-                    <p><strong>{{ $bukaSekarang ? 'Buka' : 'Tutup' }}</strong></p>
+                    @if($bukaSekarang)
+                <span class="status-buka">🟢 Buka</span>
+@else
+    <span class="status-tutup">🔴 Tutup</span>
+@endif
                     <a href="{{ route('destinasi.detail', $destinasi->id) }}" class="btn btn-pink w-100 d-flex align-items-center justify-content-center gap-2">
                         Lihat Detail
                         <i class="bi bi-arrow-right"></i>
@@ -51,6 +78,9 @@
     <section class="pengalaman-wisata">
         <div class="container text-center">
             <h2>Temukan Pengalamanmu</h2>
+            <p class="sub-pengalaman">
+                Jelajahi wisata alam, sejarah, dan kuliner khas Palembang yang siap memberikan pengalaman tak terlupakan.
+            </p>
             <div class="pengalaman-container">
 
                 <div class="pengalaman-card">

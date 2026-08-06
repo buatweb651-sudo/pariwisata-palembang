@@ -44,7 +44,7 @@
                         <p>Jalan Sultan Mahmud Badaruddin II di kawasan 16 Ilir. </p>
                     </li>
                     <li>
-                        <strong>Telepon / WhatsApp</strong>
+                        <strong> Telepon </strong>
                         <p>0260581677</p>
                     </li>
                     <li>
@@ -101,10 +101,7 @@
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1019963.0233432209!2d103.35191414606126!3d-3.0327084214227424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30713dc6afba7609%3A0x2636f733f17e95a0!2sSungai%20Musi!5e0!3m2!1sid!2sid!4v1785381042534!5m2!1sid!2sid"
     width="100%" height="350" style="border:0;" allowfullscreen=""
     loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-</iframe> width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>"
-                width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+</iframe> 
         </div>
     </div>
 </section>

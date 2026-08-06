@@ -179,7 +179,7 @@ body {
     line-height:1.8;
     margin-bottom:35px;
 }
-
+.destinasi-banner
 .hero-button{
     display:inline-block;
     background:#8B0000;
@@ -268,6 +268,7 @@ body {
   justify-content: center;
   gap: 24px;
   flex-wrap: wrap;
+  margin-top:25px;
 }
 
 .kartu {
@@ -278,14 +279,16 @@ body {
   padding: 18px;
   text-align: center;
   overflow: hidden;
-
   box-shadow: 0 10px 25px rgba(0,0,0,.08);
   transition: all .35s ease;
+  transition: .3s ease;
+  cursor: pointer;
+  
 }
 
-.kartu:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 18px 40px rgba(122,12,12,.22);
+.kartu:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 18px 35px rgba(0,0,0,.18);
 }
 
 .kartu img {
@@ -294,7 +297,11 @@ body {
   object-fit: cover;
   border-radius: 14px;
   margin-bottom: 18px;
-  transition: transform .5s ease;
+  transition: .3s ease;
+}
+
+.kartu:hover img{
+    transform: scale(1.05);
 }
 
 .kartu h3{
@@ -1856,4 +1863,143 @@ body {
     font-size:18px;
     color:#666;
     margin:0;
+}
+
+/*==========================
+ HERO DESTINASI
+==========================*/
+
+.destinasi-banner{
+    background:linear-gradient(135deg,#8B0000,#B71C1C);
+    padding:90px 0;
+    color:white;
+}
+
+.hero-badge{
+    display:inline-block;
+    background:rgba(255,255,255,.15);
+    color:#FFD54F;
+    padding:8px 20px;
+    border-radius:30px;
+    font-size:15px;
+    margin-bottom:18px;
+    font-weight:600;
+}
+
+.hero-title{
+    font-size:54px;
+    font-weight:700;
+    line-height:1.2;
+    margin-bottom:20px;
+}
+
+.hero-subtitle{
+    max-width:700px;
+    margin:auto;
+    font-size:18px;
+    color:#F8F8F8;
+    line-height:1.8;
+}
+
+.btn-hero{
+    display:inline-block;
+    margin-top:35px;
+    background:#FFD54F;
+    color:#8B0000;
+    padding:14px 40px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn-hero:hover{
+    background:white;
+    color:#8B0000;
+    transform:translateY(-4px);
+    box-shadow:0 15px 30px rgba(0,0,0,.2);
+}
+
+.sub-judul{
+    text-align:center;
+    color:#777;
+    margin-top:-10px;
+    margin-bottom:35px;
+    font-size:17px;
+}
+
+.sub-pengalaman{
+    max-width:700px;
+    margin:15px auto 45px;
+    text-align:center;
+    color:#666;
+    line-height:1.8;
+    font-size:17px;
+}
+
+.kartu{
+    transition:.35s ease;
+}
+
+.kartu:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 35px rgba(0,0,0,.15);
+}
+
+.kartu img{
+    transition:.35s;
+}
+
+.kartu:hover img{
+    transform:scale(1.05);
+}
+
+.kartu{
+    overflow:hidden;
+}
+
+.pengalaman-card{
+    transition:.35s ease;
+}
+
+.pengalaman-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 35px rgba(0,0,0,.15);
+}
+
+.status-buka,
+.status-tutup{
+    display:inline-block;
+    margin:15px 0;
+    padding:8px 18px;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:600;
+}
+
+.status-buka{
+    background:#d4edda;
+    color:#198754;
+}
+
+.status-tutup{
+    background:#f8d7da;
+    color:#dc3545;
+}
+
+.badge-harga-tiket {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, #f5c518, #d4a017);
+    color: #7a1e1e;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 6px 14px;
+    border-radius: 50px;
+    box-shadow: 0 2px 6px rgba(122, 30, 30, 0.15);
+}
+
+.badge-harga-tiket i {
+    font-size: 0.9rem;
 }
