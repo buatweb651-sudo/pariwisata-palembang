@@ -26,6 +26,8 @@
 style="width:100%; height:430px; object-fit:cover;" alt="{{ $destinasi->nama }}">
         </div>
 
+        
+
         <div class="col-md-6">
             @php
 $jam = date('H:i:s');
@@ -64,6 +66,9 @@ $buka = $jam >= $destinasi->jam_buka && $jam < $destinasi->jam_tutup;
 
 </ul>
 
+
+
+
             <div class="d-flex gap-2">
                 <a href="{{ route('destinasi') }}" class="btn-outline-tema">Kembali ke Destinasi</a>
                 <a href="{{ route('kontak') }}#kontak" class="btn-tema">Hubungi Kami</a>
@@ -71,7 +76,27 @@ $buka = $jam >= $destinasi->jam_buka && $jam < $destinasi->jam_tutup;
         </div>
     </div>
 
-    <hr class="my-5">
+    
+
+    <div class="detail-atraksi mt-5">
+    <h2 class="section-title">Atraksi di Destinasi Ini</h2>
+    <div class="row g-3">
+        @forelse ($destinasi->atraksi as $atraksi)
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <img src="{{ asset('images/' . $atraksi->gambar) }}" class="card-img-top">
+                    <div class="card-body">
+                        <h6 class="card-title">{{ $atraksi->nama }}</h6>
+                        <span class="badge bg-secondary">{{ $atraksi->kategori }}</span>
+                    </div>
+                </div>
+            </div>
+        @empty
+            <p class="text-muted">Belum ada atraksi untuk destinasi ini.</p>
+        @endforelse
+    </div>
+</div>
+
 
     <div class="card fasilitas-card">
     <div class="card-body">
@@ -80,25 +105,24 @@ $buka = $jam >= $destinasi->jam_buka && $jam < $destinasi->jam_tutup;
             <div class="col">
                 <div class="fasilitas-item">
                     
-                    <span>Area Parkir</span>
+                    <span>🅿️ Area Parkir</span>
                 </div>
             </div>
             <div class="col">
                 <div class="fasilitas-item">
                     
-                    <span>Toilet Umum</span>
+                    <span>🚻 Toilet Umum</span>
                 </div>
             </div>
             <div class="col">
                 <div class="fasilitas-item">
                     
-                    <span>Warung/Kios</span>
+                    <span>🏪 Warung/Kios</span>
                 </div>
             </div>
             <div class="col">
                 <div class="fasilitas-item">
-                   
-                    <span>Spot Foto</span>
+                   <span>📸 Spot Foto</span>
                 </div>
             </div>
         </div>

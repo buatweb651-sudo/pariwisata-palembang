@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <section class="destinasi-banner">
+   <section class="destinasi-banner" style="background-image: url('{{ asset('images/herol.jpg') }}');">
     <div class="container text-center">
 
         <span class="banner-badge">
@@ -51,12 +51,15 @@
                     $bukaSekarang = ($jamSekarang >= $destinasi->jam_buka && $jamSekarang < $destinasi->jam_tutup);
                 ?>
                 <div class="kartu">
-                    <img src="{{ asset('images/' . $destinasi->gambar) }}" alt="Foto {{ $destinasi->nama }}">
-                    <h3>{{ $destinasi->nama }}</h3>
+                 <div class="kartu-img-wrap">
+                 <img src="{{ asset('images/' . $destinasi->gambar) }}" alt="Foto {{ $destinasi->nama }}">
+                 <span class="badge-kategori badge-{{ $destinasi->kategori }}">{{ ucfirst($destinasi->kategori) }}</span>
+              </div>
+                 <h3>{{ $destinasi->nama }}</h3>
                     <p>{{ $destinasi->deskripsi }}</p>
-                    @if($bukaSekarang)
+                  @if($bukaSekarang)
                 <span class="status-buka">🟢 Buka</span>
-@else
+            @else
     <span class="status-tutup">🔴 Tutup</span>
 @endif
                     <a href="{{ route('destinasi.detail', $destinasi->id) }}" class="btn btn-pink w-100 d-flex align-items-center justify-content-center gap-2">
@@ -64,9 +67,13 @@
                         <i class="bi bi-arrow-right"></i>
                     </a>
                 </div>
-            @empty
-                <p class="pesan-kosong">Belum ada destinasi tersedia.</p>
-            @endforelse
+           @empty
+    <div class="empty-state">
+        <div class="empty-icon">🔍</div>
+        <p class="pesan-kosong">Yah, destinasi "{{ $keyword }}" tidak ditemukan.</p>
+        <a href="{{ route('destinasi') }}" class="btn-reset-filter">Lihat Semua Destinasi</a>
+    </div>
+@endforelse
         </div>
         <div class="d-flex justify-content-center mt-4 pagination-tema">
     {{ $destinasiList->appends(['cari' => $keyword])->links('pagination::bootstrap-5') }}
@@ -76,39 +83,44 @@
     </section>
 
     <section class="pengalaman-wisata">
-        <div class="container text-center">
-            <h2>Temukan Pengalamanmu</h2>
-            <p class="sub-pengalaman">
-                Jelajahi wisata alam, sejarah, dan kuliner khas Palembang yang siap memberikan pengalaman tak terlupakan.
-            </p>
-            <div class="pengalaman-container">
+    <div class="container text-center">
+        <h2>Temukan Pengalamanmu</h2>
+        <p class="sub-pengalaman">
+            Jelajahi wisata alam, sejarah, dan kuliner khas Palembang yang siap memberikan pengalaman tak terlupakan.
+        </p>
 
-                <div class="pengalaman-card">
-                    <img src="{{ asset('images/plb1 (2).jpg') }}" alt="Wisata Alam">
-                    <div class="pengalaman-isi">
-                        <h3>Wisata Alam</h3>
-                        <p>Nikmati kesejukan taman, sungai, dan udara segar khas Palembang.</p>
-                    </div>
+        @if($kategori ?? false)
+            <a href="{{ route('destinasi') }}" class="btn-reset-filter">✕ Hapus Filter ({{ ucfirst($kategori) }})</a>
+        @endif
+
+        <div class="pengalaman-container">
+
+            <a href="{{ route('destinasi', ['kategori' => 'alam']) }}" class="pengalaman-card {{ ($kategori ?? '') == 'alam' ? 'active' : '' }}">
+                <img src="{{ asset('images/plb1 (2).jpg') }}" alt="Wisata Alam">
+                <div class="pengalaman-isi">
+                    <h3>Wisata Alam <span class="badge-jumlah">{{ $jumlahAlam }}</span></h3>
+                    <p>Nikmati kesejukan taman, sungai, dan udara segar khas Palembang.</p>
                 </div>
+            </a>
 
-                <div class="pengalaman-card">
-                    <img src="{{ asset('images/plb2 (2).webp') }}" alt="Wisata Sejarah">
-                    <div class="pengalaman-isi">
-                        <h3>Wisata Sejarah</h3>
-                        <p>Telusuri jejak Kesultanan Palembang lewat benteng dan bangunan bersejarah.</p>
-                    </div>
+            <a href="{{ route('destinasi', ['kategori' => 'budaya']) }}" class="pengalaman-card {{ ($kategori ?? '') == 'budaya' ? 'active' : '' }}">
+                <img src="{{ asset('images/plb2 (2).webp') }}" alt="Wisata Budaya">
+                <div class="pengalaman-isi">
+                   <h3>Wisata Budaya <span class="badge-jumlah">{{ $jumlahBudaya }}</span></h3>
+                    <p>Telusuri jejak Kesultanan Palembang lewat benteng dan bangunan bersejarah.</p>
                 </div>
+            </a>
 
-                <div class="pengalaman-card">
-                    <img src="{{ asset('images/plb3 (2).jpg') }}" alt="Kuliner">
-                    <div class="pengalaman-isi">
-                        <h3>Kuliner</h3>
-                        <p>Cicipi pempek, tekwan, model, dan aneka kuliner khas Palembang.</p>
-                    </div>
+            <a href="{{ route('destinasi', ['kategori' => 'kuliner']) }}" class="pengalaman-card {{ ($kategori ?? '') == 'kuliner' ? 'active' : '' }}">
+                <img src="{{ asset('images/plb3 (2).jpg') }}" alt="Kuliner">
+                <div class="pengalaman-isi">
+                   <h3>Kuliner <span class="badge-jumlah">{{ $jumlahKuliner }}</span></h3>
+                    <p>Cicipi pempek, tekwan, model, dan aneka kuliner khas Palembang.</p>
                 </div>
+            </a>
 
-            </div>
         </div>
-    </section>
+    </div>
+</section>
 
 @endsection

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Destinasi;
 use Illuminate\Http\Request;
-
+use App\Models\Atraksi;
 class DestinasiController extends Controller
 {
     /**
@@ -21,6 +21,7 @@ class DestinasiController extends Controller
             'jam_buka'   => 'required|date_format:H:i',
             'jam_tutup'  => 'required|date_format:H:i|after:jam_buka',
             'lokasi'     => 'required|string|max:255',
+            'kategori'   => 'required|in:alam,budaya,kuliner',
         ];
     }
 
@@ -49,24 +50,34 @@ class DestinasiController extends Controller
 
             'lokasi.required'    => 'Lokasi wajib diisi.',
             'lokasi.max'         => 'Lokasi maksimal :max karakter.',
+            'kategori.required'  => 'Kategori wajib dipilih.',
+            'kategori.in'        => 'Kategori harus salah satu dari: alam, budaya, kuliner.',
         ];
     }
 
     public function index(Request $request)
-    {
-        $keyword = $request->input('cari');
+{
+    $keyword = $request->input('cari');
+    $kategori = $request->input('kategori');
 
-        $destinasiList = Destinasi::when($keyword, function ($query) use ($keyword) {
-                $query->where('nama', 'like', '%' . $keyword . '%');
-            })
-            ->latest()
-            ->paginate(2);
+    $destinasiList = Destinasi::when($keyword, function ($query) use ($keyword) {
+            $query->where('nama', 'like', '%' . $keyword . '%');
+        })
+        ->when($kategori, function ($query) use ($kategori) {
+            $query->where('kategori', $kategori);
+        })
+        ->latest()
+        ->paginate(2);
 
-        return view('destinasi', compact('destinasiList', 'keyword'));
-    }
+    $jumlahAlam = Destinasi::where('kategori', 'alam')->count();
+    $jumlahBudaya = Destinasi::where('kategori', 'budaya')->count();
+    $jumlahKuliner = Destinasi::where('kategori', 'kuliner')->count();
 
+    return view('destinasi', compact('destinasiList', 'keyword', 'kategori', 'jumlahAlam', 'jumlahBudaya', 'jumlahKuliner'));
+}
     public function show($id)
     {
+         $destinasi = Destinasi::with('atraksi')->findOrFail($id);
         $destinasi = Destinasi::findOrFail($id);
 
         return view('destinasi-detail', [

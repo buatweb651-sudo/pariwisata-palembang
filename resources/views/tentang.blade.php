@@ -34,34 +34,47 @@
     <div class="container">
         <h2 class="text-center">Keunggulan Palembang</h2>
         <div class="row gy-4">
-            <div class="col-md-3">
-                <div class="keunggulan-card">
-                    <h3>Sejarah & Budaya</h3>
-                     <img src="{{ asset('images/plb5.jpg') }}" alt="Gambaran Rumah Limas Palembang" class="img-fluid tentang-img">
-                    <p>Rumah Limas merupakan rumah tradisional khas Palembang yang mencerminkan kekayaan budaya dan kehidupan masyarakat Sumatera Selatan sejak dahulu.</p>
+
+            <div class="col-md-3 d-flex">
+                <div class="card">
+                    <div class="keunggulan-card">
+                        <h3>Sejarah & Budaya</h3>
+                        <img src="{{ asset('images/plb5.jpg') }}" alt="Gambaran Rumah Limas Palembang" class="img-fluid tentang-img">
+                        <p>Rumah Limas merupakan rumah tradisional khas Palembang yang mencerminkan kekayaan budaya dan kehidupan masyarakat Sumatera Selatan sejak dahulu.</p>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="keunggulan-card">
-                    <h3>Wisata Ikonik</h3>
-                     <img src="{{ asset('images/plb6.jpg') }}" alt="Gambaran Sungai Musi" class="img-fluid tentang-img">
-                    <p>Sungai Musi merupakan sungai yang menjadi ikon Kota Palembang dan memiliki peran penting dalam sejarah, kehidupan, serta perkembangan kota.</p>
+
+            <div class="col-md-3 d-flex">
+                <div class="card">
+                    <div class="keunggulan-card">
+                        <h3>Wisata Ikonik</h3>
+                        <img src="{{ asset('images/plb6.jpg') }}" alt="Gambaran Sungai Musi" class="img-fluid tentang-img">
+                        <p>Sungai Musi merupakan sungai yang menjadi ikon Kota Palembang dan memiliki peran penting dalam sejarah, kehidupan, serta perkembangan kota.</p>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="keunggulan-card">
-                    <h3>Kuliner Khas</h3>
-                     <img src="{{ asset('images/plb7.jpg') }}" alt="Gambaran Pempek Palembang" class="img-fluid tentang-img">
-                    <p>Pempek merupakan kuliner khas Palembang berbahan dasar ikan dan tepung sagu, disajikan dengan kuah cuko yang memiliki cita rasa gurih, manis, dan sedikit pedas.</p>
+
+            <div class="col-md-3 d-flex">
+                <div class="card">
+                    <div class="keunggulan-card">
+                        <h3>Kuliner Khas</h3>
+                        <img src="{{ asset('images/plb7.jpg') }}" alt="Gambaran Pempek Palembang" class="img-fluid tentang-img">
+                        <p>Pempek merupakan kuliner khas Palembang berbahan dasar ikan dan tepung sagu, disajikan dengan kuah cuko yang memiliki cita rasa gurih, manis, dan sedikit pedas.</p>
+                    </div>
                 </div>
             </div>
-             <div class="col-md-3">
-                <div class="keunggulan-card">
-                    <h3>Kerajinan & Kesenian</h3>
-                     <img src="{{ asset('images/plb8.jpg') }}" alt="Gambaran Kain Jumputan" class="img-fluid tentang-img">
-                    <p>Kain Jumputan merupakan kain khas Palembang dengan motif dan warna yang dibuat melalui teknik ikat dan celup, menghasilkan corak unik yang menjadi bagian dari kerajinan tradisional daerah.</p>
+
+            <div class="col-md-3 d-flex">
+                <div class="card">
+                    <div class="keunggulan-card">
+                        <h3>Kerajinan & Kesenian</h3>
+                        <img src="{{ asset('images/plb8.jpg') }}" alt="Gambaran Kain Jumputan" class="img-fluid tentang-img">
+                        <p>Kain Jumputan merupakan kain khas Palembang dengan motif dan warna yang dibuat melalui teknik ikat dan celup, menghasilkan corak unik yang menjadi bagian dari kerajinan tradisional daerah.</p>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 </section>

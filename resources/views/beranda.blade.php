@@ -10,6 +10,11 @@
 @section('content')
 
 <section class="hero">
+    <div class="hero-slider">
+        <div class="hero-slide" style="background-image: url('{{ asset('images/hero10.jpg') }}');"></div>
+        <div class="hero-slide" style="background-image: url('{{ asset('images/hero20.jpg') }}');"></div>
+        <div class="hero-slide" style="background-image: url('{{ asset('images/hero30.jpg') }}');"></div>
+    </div>
 
     <?php
     $JamSekarang = date("H:i");
@@ -88,13 +93,50 @@
                 <img src="{{ asset('images/' . $destinasi->gambar) }}" alt="{{ $destinasi->nama }}">
                 <h3>{{ $destinasi->nama }}</h3>
                 <p>{{ $destinasi->deskripsi }}</p>
-                <p><strong>
-                    @php $sekarang = date("H:i:s"); @endphp
-                    {{ ($sekarang >= $destinasi->jam_buka && $sekarang <= $destinasi->jam_tutup) ? 'Buka' : 'Tutup' }}
-                </strong></p>
-                
             </div>
         @endforeach
+    </div>
+</section>
+
+<section class="info-terbaru">
+    <div class="container">
+        <h2 class="text-center">Info & Event Terbaru</h2>
+        <p class="text-center sub-judul">Ikuti kabar dan agenda wisata terkini seputar Kota Palembang.</p>
+
+        <div class="row gy-4 mt-3">
+            <div class="col-md-4">
+                <div class="info-card">
+                   <img src="{{ asset('images/hero100.webp') }}" alt="Festival Sriwijaya">
+                    <div class="info-card-body">
+                        <span class="info-tanggal">15 Agustus 2026</span>
+                        <h3>Festival Sriwijaya 2026</h3>
+                        <p>Perayaan tahunan yang menampilkan pertunjukan budaya, kuliner khas, dan pameran kerajinan tradisional Palembang.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="info-card">
+                    <img src="{{ asset('images/hero200.jpeg') }}" alt="Lomba Perahu Bidar">
+                    <div class="info-card-body">
+                        <span class="info-tanggal">17 Agustus 2026</span>
+                        <h3>Lomba Perahu Bidar Sungai Musi</h3>
+                        <p>Perlombaan tradisional dayung perahu bidar yang digelar di Sungai Musi dalam rangka HUT Kemerdekaan RI.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="info-card">
+                   <img src="{{ asset('images/hero300.jpeg') }}" alt="Jam Operasional Baru">
+                    <div class="info-card-body">
+                        <span class="info-tanggal">1 Agustus 2026</span>
+                        <h3>Perpanjangan Jam Kunjungan Pulau Kemaro</h3>
+                        <p>Mulai bulan ini, jam kunjungan Pulau Kemaro diperpanjang hingga pukul 18.00 WIB setiap hari.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
