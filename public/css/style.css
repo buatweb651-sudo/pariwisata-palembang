@@ -1255,6 +1255,67 @@ body {
     --gold-dark: #d99a1b;
 }
 
+.detail-ulasan {
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(240, 180, 41, 0.06), rgba(107, 15, 26, 0.04));
+    border-radius: 16px;
+}
+
+.ulasan-card {
+    position: relative;
+    background: #fff;
+    border-radius: 14px;
+    padding: 1.75rem;
+    border: 1px solid rgba(107, 15, 26, 0.08);
+    border-left: 4px solid var(--gold);
+    box-shadow: 0 4px 14px rgba(107, 15, 26, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ulasan-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(107, 15, 26, 0.12);
+}
+
+.ulasan-quote-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    font-size: 1.8rem;
+    color: var(--gold);
+    opacity: 0.35;
+}
+
+.ulasan-avatar {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--maroon);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+.ulasan-stars i {
+    font-size: 0.85rem;
+    color: var(--gold);
+    margin-right: 1px;
+}
+
+.ulasan-stars i.bi-star {
+    color: #dcdcdc;
+}
+
+.ulasan-komentar {
+    color: #444;
+    font-style: italic;
+    line-height: 1.6;
+}
+
 .text-maroon {
     color: var(--maroon);
 }
@@ -2344,4 +2405,79 @@ body {
     color: #555;
     font-size: 14px;
     line-height: 1.6;
+}
+
+.atraksi-card {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.atraksi-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(128, 0, 0, 0.18);
+}
+
+.atraksi-img-wrap {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+
+.atraksi-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+}
+
+.atraksi-card:hover .atraksi-img-wrap img {
+    transform: scale(1.08);
+}
+
+.atraksi-badge-kategori {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #7a0c0c;
+    color: #ffd966;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+}
+
+.atraksi-body {
+    padding: 16px 18px 18px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.atraksi-title {
+    color: #7a0c0c;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.atraksi-desc {
+    font-size: 0.9rem;
+    color: #555;
+    flex-grow: 1;
+    margin-bottom: 12px;
+}
+
+.atraksi-harga {
+    align-self: flex-start;
+    background: #fff3cd;
+    color: #8a6300;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 5px 12px;
+    border-radius: 20px;
 }

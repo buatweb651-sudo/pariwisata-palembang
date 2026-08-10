@@ -87,15 +87,15 @@
 
 <section class="destinasi" id="destinasi">
     <h2>Destinasi Unggulan</h2>
-    <div class="kartu-container">
-        @foreach ($destinasiList as $destinasi)
-            <div class="kartu">
-                <img src="{{ asset('images/' . $destinasi->gambar) }}" alt="{{ $destinasi->nama }}">
-                <h3>{{ $destinasi->nama }}</h3>
-                <p>{{ $destinasi->deskripsi }}</p>
-            </div>
-        @endforeach
-    </div>
+   <div class="kartu-container">
+    @foreach ($destinasiList->take(3) as $destinasi)
+        <div class="kartu">
+            <img src="{{ asset('storage/' . $destinasi->gambar) }}" alt="{{ $destinasi->nama }}">
+            <h3>{{ $destinasi->nama }}</h3>
+            <p>{{ $destinasi->deskripsi }}</p>
+        </div>
+    @endforeach
+</div>
 </section>
 
 <section class="info-terbaru">
@@ -131,7 +131,7 @@
                    <img src="{{ asset('images/hero300.jpeg') }}" alt="Jam Operasional Baru">
                     <div class="info-card-body">
                         <span class="info-tanggal">1 Agustus 2026</span>
-                        <h3>Perpanjangan Jam Kunjungan Pulau Kemaro</h3>
+                        <h3> Ziarah Kubro di Palembang</h3>
                         <p>Mulai bulan ini, jam kunjungan Pulau Kemaro diperpanjang hingga pukul 18.00 WIB setiap hari.</p>
                     </div>
                 </div>

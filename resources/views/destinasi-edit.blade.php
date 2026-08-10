@@ -41,7 +41,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('destinasi.update', $destinasi->id) }}" method="POST">
+                    <form action="{{ route('destinasi.update', $destinasi->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -71,42 +71,35 @@
 
                         <div class="mb-3">
                             <label for="gambar" class="form-label">Nama File Gambar</label>
-                            <input
-                                type="text"
-                                class="form-control"
-                                id="gambar"
-                                name="gambar"
-                                value="{{ old('gambar', $destinasi->gambar) }}"
-                                required
-                            >
+                               <input type="file" name="gambar" class="form-control" accept="image/*">
                             <div class="form-text">
                                 Nama file gambar yang tersimpan di folder public/images.
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="jam_buka" class="form-label">Jam Buka</label>
-                                <input
-                                    type="time"
-                                    class="form-control"
-                                    id="jam_buka"
-                                    name="jam_buka"
-                                    value="{{ old('jam_buka', $destinasi->jam_buka) }}"
-                                    required
-                                >
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="jam_tutup" class="form-label">Jam Tutup</label>
-                                <input
-                                    type="time"
-                                    class="form-control"
-                                    id="jam_tutup"
-                                    name="jam_tutup"
-                                    value="{{ old('jam_tutup', $destinasi->jam_tutup) }}"
-                                    required
-                                >
-                            </div>
+                           <div class="col-md-6 mb-3">
+    <label for="jam_buka" class="form-label">Jam Buka</label>
+    <input
+        type="time"
+        class="form-control"
+        id="jam_buka"
+        name="jam_buka"
+        value="{{ old('jam_buka', substr($destinasi->jam_buka, 0, 5)) }}"
+        required
+    >
+</div>
+<div class="col-md-6 mb-3">
+    <label for="jam_tutup" class="form-label">Jam Tutup</label>
+    <input
+        type="time"
+        class="form-control"
+        id="jam_tutup"
+        name="jam_tutup"
+        value="{{ old('jam_tutup', substr($destinasi->jam_tutup, 0, 5)) }}"
+        required
+    >
+</div>
                         </div>
 
                         <div class="mb-4">
@@ -119,6 +112,24 @@
                                 value="{{ old('lokasi', $destinasi->lokasi) }}"
                             >
                         </div>
+
+                        <div class="row">
+    <div class="col-md-6">
+        <div class="pb-group">
+            <label for="kategori"><i class="fa-solid fa-bookmark"></i> Kategori</label>
+            <select id="kategori" name="kategori"
+                    class="pb-input pb-select @error('kategori') is-invalid @enderror">
+                <option value="" disabled>-- Pilih Kategori --</option>
+                <option value="budaya" {{ old('kategori', $destinasi->kategori) == 'budaya' ? 'selected' : '' }}>Budaya</option>
+                <option value="alam" {{ old('kategori', $destinasi->kategori) == 'alam' ? 'selected' : '' }}>Alam</option>
+                <option value="kuliner" {{ old('kategori', $destinasi->kategori) == 'kuliner' ? 'selected' : '' }}>Kuliner</option>
+            </select>
+            @error('kategori')
+                <div class="pb-error">{{ $message }}</div>
+            @enderror
+        </div>
+    </div>
+</div>
 
                         <div class="mb-4">
                            <label class="form-label">Harga Tiket (Rp)</label>

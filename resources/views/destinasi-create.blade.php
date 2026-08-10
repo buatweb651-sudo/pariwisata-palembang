@@ -48,7 +48,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('destinasi.store') }}" method="POST">
+                    <form action="{{ route('destinasi.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="mb-3">
@@ -78,15 +78,7 @@
 
                         <div class="mb-3">
                             <label for="gambar" class="form-label">Nama File Gambar</label>
-                            <input
-                                type="text"
-                                class="form-control"
-                                id="gambar"
-                                name="gambar"
-                                value="{{ old('gambar') }}"
-                                placeholder="contoh: istana-siak.jpg"
-                                required
-                            >
+                           <input type="file" name="gambar" class="form-control" accept="image/*" required>
                             <div class="form-text">
                                 Sementara isi nama file gambar yang sudah tersedia di folder public/images.
                             </div>
@@ -125,15 +117,35 @@
                                 id="lokasi"
                                 name="lokasi"
                                 value="{{ old('lokasi') }}"
-                                placeholder="contoh: Kecamatan Siak, Kabupaten Siak"
+                                placeholder="contoh: Jalan Srijaya Negara"
                             >
                         </div>
+
+                        <div class="row">
+    <div class="col-md-6">
+        <div class="pb-group">
+            <label for="kategori"><i class="fa-solid fa-bookmark"></i> Kategori</label>
+            <select id="kategori" name="kategori"
+                    class="pb-input pb-select @error('kategori') is-invalid @enderror">
+                <option value="" selected disabled>-- Pilih Kategori --</option>
+                <option value="budaya" {{ old('kategori') == 'budaya' ? 'selected' : '' }}>Budaya</option>
+                <option value="alam" {{ old('kategori') == 'alam' ? 'selected' : '' }}>Alam</option>
+                <option value="kuliner" {{ old('kategori') == 'kuliner' ? 'selected' : '' }}>Kuliner</option>
+            </select>
+            @error('kategori')
+                <div class="pb-error">{{ $message }}</div>
+            @enderror
+        </div>
+    </div>
+</div>
 
                                  <div class="mb-4">
                                     <label class="form-label">Harga Tiket (Rp)</label>
                                      <input type="number" name="harga_tiket" class="form-control"
                                                 placeholder="contoh: 10000" min="0">
                                     </div>
+
+                                    
 
 
                         <div class="d-flex gap-2">

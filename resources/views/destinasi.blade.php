@@ -52,7 +52,7 @@
                 ?>
                 <div class="kartu">
                  <div class="kartu-img-wrap">
-                 <img src="{{ asset('images/' . $destinasi->gambar) }}" alt="Foto {{ $destinasi->nama }}">
+                 <img src="{{ asset('storage/' . $destinasi->gambar) }}" alt="Foto {{ $destinasi->nama }}">
                  <span class="badge-kategori badge-{{ $destinasi->kategori }}">{{ ucfirst($destinasi->kategori) }}</span>
               </div>
                  <h3>{{ $destinasi->nama }}</h3>
@@ -96,7 +96,7 @@
         <div class="pengalaman-container">
 
             <a href="{{ route('destinasi', ['kategori' => 'alam']) }}" class="pengalaman-card {{ ($kategori ?? '') == 'alam' ? 'active' : '' }}">
-                <img src="{{ asset('images/plb1 (2).jpg') }}" alt="Wisata Alam">
+                <img src="{{ asset('storage/destinasi/plb1.jpg') }}" alt="Wisata Alam">
                 <div class="pengalaman-isi">
                     <h3>Wisata Alam <span class="badge-jumlah">{{ $jumlahAlam }}</span></h3>
                     <p>Nikmati kesejukan taman, sungai, dan udara segar khas Palembang.</p>
@@ -104,7 +104,7 @@
             </a>
 
             <a href="{{ route('destinasi', ['kategori' => 'budaya']) }}" class="pengalaman-card {{ ($kategori ?? '') == 'budaya' ? 'active' : '' }}">
-                <img src="{{ asset('images/plb2 (2).webp') }}" alt="Wisata Budaya">
+                <img src="{{ asset('storage/destinasi/plb2 (2).webp') }}" alt="Wisata Budaya">
                 <div class="pengalaman-isi">
                    <h3>Wisata Budaya <span class="badge-jumlah">{{ $jumlahBudaya }}</span></h3>
                     <p>Telusuri jejak Kesultanan Palembang lewat benteng dan bangunan bersejarah.</p>
@@ -112,7 +112,7 @@
             </a>
 
             <a href="{{ route('destinasi', ['kategori' => 'kuliner']) }}" class="pengalaman-card {{ ($kategori ?? '') == 'kuliner' ? 'active' : '' }}">
-                <img src="{{ asset('images/plb3 (2).jpg') }}" alt="Kuliner">
+                <img src="{{ asset('storage/destinasi/plb3.jpg') }}" alt="Kuliner">
                 <div class="pengalaman-isi">
                    <h3>Kuliner <span class="badge-jumlah">{{ $jumlahKuliner }}</span></h3>
                     <p>Cicipi pempek, tekwan, model, dan aneka kuliner khas Palembang.</p>
