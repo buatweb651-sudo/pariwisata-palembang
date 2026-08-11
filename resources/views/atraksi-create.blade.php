@@ -37,7 +37,7 @@
                             </div>
                         @endif
 
-                        <form action="{{ route('atraksi.store') }}" method="POST" class="pb-form">
+                        <form action="{{ route('atraksi.store') }}" method="POST" class="pb-form" enctype="multipart/form-data">
                             @csrf
 
                             <select name="destinasi_id" class="form-select @error('destinasi_id') is-invalid @enderror">
@@ -106,10 +106,7 @@
 
                             <div class="pb-group">
                                 <label for="gambar"><i class="fa-solid fa-image"></i> Nama File Gambar</label>
-                                <input type="text" id="gambar" name="gambar"
-                                       class="pb-input @error('gambar') is-invalid @enderror"
-                                       value="{{ old('gambar') }}"
-                                       placeholder="contoh: tari-zapin.jpg">
+                                <input type="file" name="gambar" class="form-control" accept="image/*" required>
                                 @error('gambar')
                                     <div class="pb-error">{{ $message }}</div>
                                 @enderror

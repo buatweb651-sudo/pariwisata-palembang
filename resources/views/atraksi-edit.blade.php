@@ -20,7 +20,7 @@
 
                     <h2 class="card-title mb-4">Edit Atraksi</h2>
 
-                    <form action="{{ route('atraksi.update', $atraksi->id) }}" method="POST">
+                    <form action="{{ route('atraksi.update', $atraksi->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -78,9 +78,7 @@
 
                         <div class="mb-4">
                             <label for="gambar" class="form-label">Nama File Gambar</label>
-                            <input type="text" name="gambar"
-                                   class="form-control @error('gambar') is-invalid @enderror"
-                                   value="{{ old('gambar', $atraksi->gambar) }}">
+                            <input type="file" name="gambar" class="form-control" accept="image/*">
                             @error('gambar')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
