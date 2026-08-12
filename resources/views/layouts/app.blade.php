@@ -62,6 +62,11 @@
     </a>
 </li>
             <li><hr class="dropdown-divider"></li>
+
+            @if(Auth::user()->role === 'admin')
+                <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Dashboard Admin</a></li>
+            @endif
+
             <li>
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf

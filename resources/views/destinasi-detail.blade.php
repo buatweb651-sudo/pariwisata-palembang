@@ -174,7 +174,11 @@ $buka = $jam >= $destinasi->jam_buka && $jam < $destinasi->jam_tutup;
         </div>
     </div>
 </div>
-    <div class="btn-hapus-wrapper">
+   @if(Auth::check() && Auth::user()->role === 'admin')
+    <div class="btn-hapus-wrapper d-flex justify-content-center gap-3">
+        <a href="{{ route('destinasi.edit', $destinasi->id) }}" class="btn-outline-tema">
+            <i class="bi bi-pencil-square"></i> Edit Destinasi
+        </a>
         <form action="{{ route('destinasi.destroy', $destinasi->id) }}" method="POST"
               onsubmit="return confirm('Yakin ingin menghapus data ini?')">
             @csrf
@@ -182,6 +186,7 @@ $buka = $jam >= $destinasi->jam_buka && $jam < $destinasi->jam_tutup;
             <button type="submit" class="btn-hapus">Hapus Destinasi</button>
         </form>
     </div>
+    @endif
 
 </div>
 

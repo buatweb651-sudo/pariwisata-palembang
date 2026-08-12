@@ -1646,10 +1646,10 @@ body {
 /* ---------- FORM CARD ---------- */
 .pb-card {
     background: #ffffff;
-    border-radius: 20px;
+    border-radius: 28px;
     overflow: hidden;
-    box-shadow: 0 15px 45px rgba(122, 13, 13, 0.12);
-    border: 1px solid var(--pb-line);
+    box-shadow: 0 20px 60px rgba(122, 13, 13, 0.07);
+    border: none;
     animation: pb-fade-up 0.5s ease;
 }
 
@@ -1659,51 +1659,50 @@ body {
 }
 
 .pb-card-header {
-    background: linear-gradient(135deg, var(--pb-maroon), var(--pb-maroon-dark));
-    padding: 2rem 2.2rem;
+    background: #fffdf7;
+    padding: 2.4rem 2.6rem 1.6rem;
     display: flex;
     align-items: center;
     gap: 18px;
     position: relative;
-    overflow: hidden;
 }
 
 /* aksen garis emas tipis di bawah header */
 .pb-card-header::after {
     content: '';
     position: absolute;
-    left: 0; right: 0; bottom: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--pb-gold), var(--pb-gold-deep), var(--pb-gold));
+    left: 2.6rem; right: 2.6rem; bottom: 0;
+    height: 1px;
+    background: rgba(122,13,13,0.08);
 }
 
 .pb-icon {
-    width: 54px;
-    height: 54px;
+    width: 48px;
+    height: 48px;
     flex: none;
-    background: var(--pb-gold);
-    color: var(--pb-maroon-dark);
+    background: rgba(244,197,66,0.16);
+    color: var(--pb-maroon);
     border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.3rem;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    font-size: 1.2rem;
+    box-shadow: none;
 }
 
 .pb-card-header h2 {
-    color: #ffffff;
-    font-size: 1.4rem;
+    color: var(--pb-maroon, #7a0d0d);
+    font-size: 1.35rem;
     font-weight: 700;
     margin-bottom: 2px;
 }
 .pb-card-header p {
-    color: rgba(255,255,255,0.75);
-    font-size: 0.88rem;
+    color: #a08d78;
+    font-size: 0.85rem;
     margin: 0;
 }
 
-.pb-card-body { padding: 2.2rem; }
+.pb-card-body { padding: 1.8rem 2.6rem 2.6rem; }
 
 /* ---------- ALERT ERROR ---------- */
 .pb-alert {
@@ -2719,4 +2718,107 @@ body {
     .pb-profile-side {
         flex: none;
     }
+}
+
+/* ===== EDIT PROFIL — sidebar layout ===== */
+.pb-account-layout {
+    display: flex;
+    gap: 0;
+    min-height: 500px;
+}
+
+.pb-account-sidebar {
+    flex: 0 0 240px;
+    background: #fcfaf5;
+    padding: 2.4rem 1.6rem;
+    text-align: center;
+    border-right: 1px solid rgba(0,0,0,0.04);
+}
+
+.pb-account-sidebar .pb-avatar-img,
+.pb-account-sidebar .pb-avatar-placeholder {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--pb-gold, #f4c542);
+    margin: 0 auto 10px;
+}
+
+.pb-account-sidebar .pb-avatar-placeholder {
+    background: linear-gradient(135deg, var(--pb-maroon,#7a0d0d), var(--pb-maroon-dark,#5c0909));
+    color: var(--pb-gold, #f4c542);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px; font-weight: 700;
+}
+
+.pb-account-name {
+    font-weight: 700;
+    color: var(--pb-maroon, #7a0d0d);
+    margin-bottom: 4px;
+}
+
+.pb-account-email {
+    font-size: 0.78rem;
+    color: #a08d78;
+    margin-bottom: 1.6rem;
+}
+
+.pb-account-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.pb-account-menu li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    color: #6b5840;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+    transition: .2s ease;
+    cursor: pointer;
+}
+
+.pb-account-menu li a:hover {
+    background: rgba(122,13,13,0.06);
+}
+
+.pb-account-menu li a.active {
+    background: rgba(122,13,13,0.07);
+    color: var(--pb-maroon, #7a0d0d);
+    border-left: 3px solid var(--pb-gold-deep, #d4a017);
+    padding-left: 11px;
+}
+
+.pb-account-content {
+    flex: 1;
+    padding: 2rem 2.2rem;
+    min-width: 0;
+}
+
+.pb-tab-pane { display: none; }
+.pb-tab-pane.active { display: block; }
+
+.pb-ulasan-item {
+    padding: 14px 16px;
+    border: 1px solid #f0dda8;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+.pb-ulasan-item .stars i {
+    color: var(--pb-gold-deep, #d4a017);
+    font-size: 0.85rem;
+}
+
+@media (max-width: 700px) {
+    .pb-account-layout { flex-direction: column; }
+    .pb-account-sidebar { flex: none; }
 }

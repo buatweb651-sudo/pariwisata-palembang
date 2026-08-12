@@ -30,7 +30,14 @@
 </section>
 
    <section class="destinasi" id="daftar-destinasi">
-        <h2>Daftar Destinasi</h2>
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+            <h2 class="mb-0">Daftar Destinasi</h2>
+            @if(Auth::check() && Auth::user()->role === 'admin')
+                <a href="{{ route('destinasi.create') }}" class="btn-tema">
+                    <i class="bi bi-plus-lg"></i> Tambah Destinasi
+                </a>
+            @endif
+        </div>
 
     <p class="sub-judul">
     Cari dan temukan destinasi wisata terbaik di Kota Palembang.
@@ -51,9 +58,8 @@
                     $bukaSekarang = ($jamSekarang >= $destinasi->jam_buka && $jamSekarang < $destinasi->jam_tutup);
                 ?>
                 <div class="kartu">
-                 <div class="kartu-img-wrap">
+                <div class="kartu-img-wrap">
                  <img src="{{ asset('storage/' . $destinasi->gambar) }}" alt="Foto {{ $destinasi->nama }}">
-                 <span class="badge-kategori badge-{{ $destinasi->kategori }}">{{ ucfirst($destinasi->kategori) }}</span>
               </div>
                  <h3>{{ $destinasi->nama }}</h3>
                     <p>{{ $destinasi->deskripsi }}</p>
@@ -78,49 +84,5 @@
         <div class="d-flex justify-content-center mt-4 pagination-tema">
     {{ $destinasiList->appends(['cari' => $keyword])->links('pagination::bootstrap-5') }}
 </div>
-
-        
-    </section>
-
-    <section class="pengalaman-wisata">
-    <div class="container text-center">
-        <h2>Temukan Pengalamanmu</h2>
-        <p class="sub-pengalaman">
-            Jelajahi wisata alam, sejarah, dan kuliner khas Palembang yang siap memberikan pengalaman tak terlupakan.
-        </p>
-
-        @if($kategori ?? false)
-            <a href="{{ route('destinasi') }}" class="btn-reset-filter">✕ Hapus Filter ({{ ucfirst($kategori) }})</a>
-        @endif
-
-        <div class="pengalaman-container">
-
-            <a href="{{ route('destinasi', ['kategori' => 'alam']) }}" class="pengalaman-card {{ ($kategori ?? '') == 'alam' ? 'active' : '' }}">
-                <img src="{{ asset('storage/destinasi/plb1.jpg') }}" alt="Wisata Alam">
-                <div class="pengalaman-isi">
-                    <h3>Wisata Alam <span class="badge-jumlah">{{ $jumlahAlam }}</span></h3>
-                    <p>Nikmati kesejukan taman, sungai, dan udara segar khas Palembang.</p>
-                </div>
-            </a>
-
-            <a href="{{ route('destinasi', ['kategori' => 'budaya']) }}" class="pengalaman-card {{ ($kategori ?? '') == 'budaya' ? 'active' : '' }}">
-                <img src="{{ asset('storage/destinasi/plb2 (2).webp') }}" alt="Wisata Budaya">
-                <div class="pengalaman-isi">
-                   <h3>Wisata Budaya <span class="badge-jumlah">{{ $jumlahBudaya }}</span></h3>
-                    <p>Telusuri jejak Kesultanan Palembang lewat benteng dan bangunan bersejarah.</p>
-                </div>
-            </a>
-
-            <a href="{{ route('destinasi', ['kategori' => 'kuliner']) }}" class="pengalaman-card {{ ($kategori ?? '') == 'kuliner' ? 'active' : '' }}">
-                <img src="{{ asset('storage/destinasi/plb3.jpg') }}" alt="Kuliner">
-                <div class="pengalaman-isi">
-                   <h3>Kuliner <span class="badge-jumlah">{{ $jumlahKuliner }}</span></h3>
-                    <p>Cicipi pempek, tekwan, model, dan aneka kuliner khas Palembang.</p>
-                </div>
-            </a>
-
-        </div>
-    </div>
-</section>
 
 @endsection

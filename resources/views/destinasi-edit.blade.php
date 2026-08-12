@@ -115,19 +115,6 @@
 
                         <div class="row">
     <div class="col-md-6">
-        <div class="pb-group">
-            <label for="kategori"><i class="fa-solid fa-bookmark"></i> Kategori</label>
-            <select id="kategori" name="kategori"
-                    class="pb-input pb-select @error('kategori') is-invalid @enderror">
-                <option value="" disabled>-- Pilih Kategori --</option>
-                <option value="budaya" {{ old('kategori', $destinasi->kategori) == 'budaya' ? 'selected' : '' }}>Budaya</option>
-                <option value="alam" {{ old('kategori', $destinasi->kategori) == 'alam' ? 'selected' : '' }}>Alam</option>
-                <option value="kuliner" {{ old('kategori', $destinasi->kategori) == 'kuliner' ? 'selected' : '' }}>Kuliner</option>
-            </select>
-            @error('kategori')
-                <div class="pb-error">{{ $message }}</div>
-            @enderror
-        </div>
     </div>
 </div>
 
