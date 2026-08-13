@@ -38,12 +38,20 @@ $buka = $jam >= $destinasi->jam_buka && $jam < $destinasi->jam_tutup;
     <span class="badge {{ $buka ? 'bg-success' : 'bg-danger' }}">
         {{ $buka ? 'Sedang Buka' : 'Sedang Tutup' }}
     </span>
+
     <span class="badge-harga-tiket">
         <i class="bi bi-ticket-perforated-fill"></i>
         {{ $destinasi->harga_tiket > 0 ? 'Rp ' . number_format($destinasi->harga_tiket, 0, ',', '.') . ' / orang' : 'Gratis' }}
     </span>
+
+    @if($destinasi->kategoriData)
+    <span class="badge bg-secondary">
+        {{ $destinasi->kategoriData->nama_kategori }}
+    </span>
+@endif
 </div>
-            <h1 class="mb-3">{{ $destinasi->nama }}</h1>
+
+<h1 class="mb-3">{{ $destinasi->nama }}</h1>
 
             <p class="lead">
                 {{ $destinasi->deskripsi }}
@@ -88,6 +96,7 @@ $buka = $jam >= $destinasi->jam_buka && $jam < $destinasi->jam_tutup;
                         <img src="{{ asset('storage/' . $atraksi->gambar) }}" alt="{{ $atraksi->nama }}">
                         <span class="atraksi-badge-kategori">{{ ucfirst($atraksi->kategori) }}</span>
                     </div>
+                    
                     <div class="atraksi-body">
                         <h6 class="atraksi-title">{{ $atraksi->nama }}</h6>
                         <p class="atraksi-desc">{{ $atraksi->deskripsi }}</p>
@@ -95,6 +104,37 @@ $buka = $jam >= $destinasi->jam_buka && $jam < $destinasi->jam_tutup;
                             {{ $atraksi->harga > 0 ? 'Rp ' . number_format($atraksi->harga, 0, ',', '.') : 'Gratis' }}
                         </span>
                     </div>
+                   <div class="mt-2">
+    <button type="button" class="btn-lihat-atraksi"
+            data-bs-toggle="modal" data-bs-target="#modalAtraksi{{ $atraksi->id }}">
+        Lihat Detail
+    </button>
+</div>
+                </div>
+            </div>
+
+            <!-- Modal Detail Atraksi -->
+            <div class="modal fade" id="modalAtraksi{{ $atraksi->id }}" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content modal-atraksi-tema">
+    <div class="modal-header">
+        <h5 class="modal-title">{{ $atraksi->nama }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <img src="{{ asset('storage/' . $atraksi->gambar) }}" class="modal-atraksi-img" alt="{{ $atraksi->nama }}">
+        <div class="modal-atraksi-meta">
+            <span class="badge-atraksi-kategori">{{ ucfirst($atraksi->kategori) }}</span>
+            <span class="modal-atraksi-harga">
+                {{ $atraksi->harga > 0 ? 'Rp ' . number_format($atraksi->harga, 0, ',', '.') : 'Gratis' }}
+            </span>
+        </div>
+        <p class="modal-atraksi-desc">{{ $atraksi->deskripsi }}</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn-lihat-atraksi" data-bs-dismiss="modal">Tutup</button>
+    </div>
+</div>
                 </div>
             </div>
         @empty

@@ -104,6 +104,7 @@
         </a>
         <a href="{{ route('atraksi') }}" class="{{ request()->routeIs('atraksi*') ? 'active' : '' }}">
             <i class="bi bi-stars"></i> Kelola Atraksi
+            <a href="{{ route('kategori') }}">Kelola Kategori</a>
         </a>
         <a href="{{ route('user.index') }}" class="{{ request()->routeIs('user*') ? 'active' : '' }}">            <i class="bi bi-people"></i> Kelola User
         </a>

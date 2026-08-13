@@ -343,6 +343,7 @@ body {
 .kartu-container {
   display: flex;
   justify-content: center;
+  align-items: stretch;
   gap: 24px;
   flex-wrap: wrap;
   margin-top:25px;
@@ -352,15 +353,32 @@ body {
   background: #fff;
   border: none;
   border-radius: 18px;
+  flex: 0 0 300px;
   width: 300px;
   padding: 18px;
   text-align: center;
   overflow: hidden;
   box-shadow: 0 10px 25px rgba(0,0,0,.08);
-  transition: all .35s ease;
   transition: .3s ease;
   cursor: pointer;
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+
+.kartu p {
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 72px;
+}
+
+.kartu .btn-pink {
+  margin-top: auto;
 }
 
 .kartu:hover{
@@ -2496,6 +2514,7 @@ body {
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .atraksi-card:hover {
@@ -2534,10 +2553,22 @@ body {
 }
 
 .atraksi-body {
-    padding: 16px 18px 18px;
+    padding: 16px 18px 20px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+}
+
+.atraksi-body .atraksi-desc {
+    margin-bottom: 0;
+}
+
+.atraksi-card > .mt-2 {
+    text-align: center;
 }
 
 .atraksi-title {
@@ -2821,4 +2852,275 @@ body {
 @media (max-width: 700px) {
     .pb-account-layout { flex-direction: column; }
     .pb-account-sidebar { flex: none; }
+}
+
+/* ===== Refresh tampilan kartu destinasi ===== */
+.kartu {
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    padding: 16px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.kartu:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.kartu-img-wrap img {
+    border-radius: 12px;
+}
+
+.kartu h3 {
+    font-size: 1.25rem;
+    margin-top: 12px;
+    margin-bottom: 8px;
+}
+
+.kartu .badge {
+    background-color: #fff3cd !important;
+    color: #8a6d00 !important;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.kartu .status-buka {
+    display: inline-block;
+    background-color: #e6f7ec;
+    color: #1e7e34;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin: 10px 0;
+}
+
+.kartu .status-tutup {
+    display: inline-block;
+    background-color: #fdecea;
+    color: #c0392b;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin: 10px 0;
+}
+
+.kartu .btn-pink {
+    background-color: #b3121c;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.kartu .btn-pink:hover {
+    background-color: #8f0e16;
+}
+
+.kartu-container {
+    gap: 24px;
+}
+
+/* ===== Refresh tampilan kartu destinasi ===== */
+.kartu {
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    padding: 16px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.kartu:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.kartu-img-wrap img {
+    border-radius: 12px;
+}
+
+.kartu h3 {
+    font-size: 1.25rem;
+    margin-top: 12px;
+    margin-bottom: 8px;
+}
+
+.kartu .badge {
+    background-color: #fff3cd !important;
+    color: #8a6d00 !important;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.kartu .status-buka {
+    display: inline-block;
+    background-color: #e6f7ec;
+    color: #1e7e34;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin: 10px 0;
+}
+
+.kartu .status-tutup {
+    display: inline-block;
+    background-color: #fdecea;
+    color: #c0392b;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin: 10px 0;
+}
+
+.kartu .btn-pink {
+    background-color: #b3121c;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.kartu .btn-pink:hover {
+    background-color: #8f0e16;
+}
+
+.kartu-container {
+    gap: 24px;
+}
+
+.col-md-6 .badge.bg-secondary {
+    background-color: #fff3cd !important;
+    color: #8a6d00 !important;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+/* ===== Filter Kategori (pill button) ===== */
+.filter-kategori-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.btn-kategori-pill {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 30px;
+    border: 1.5px solid #e5d9c8;
+    background-color: #ffffff;
+    color: #6b5840;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-kategori-pill:hover {
+    border-color: #B22222;
+    color: #B22222;
+    text-decoration: none;
+}
+
+.btn-kategori-pill.aktif {
+    background-color: #B22222;
+    border-color: #B22222;
+    color: #FFD700;
+    box-shadow: 0 4px 10px rgba(178, 34, 34, 0.25);
+}
+
+/* ===== Tombol Lihat Detail Atraksi ===== */
+.btn-lihat-atraksi {
+    display: inline-block;
+    background-color: transparent;
+    color: #B22222;
+    border: 1.5px solid #B22222;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-lihat-atraksi:hover {
+    background-color: #B22222;
+    color: #fff;
+}
+
+/* ===== Modal Detail Atraksi ===== */
+.modal-atraksi-tema {
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.modal-atraksi-tema .modal-header {
+    background: linear-gradient(135deg, #8B0000, #B22222);
+    border: none;
+    padding: 18px 22px;
+}
+
+.modal-atraksi-tema .modal-title {
+    color: #FFD700;
+    font-weight: 700;
+    font-size: 1.15rem;
+}
+
+.modal-atraksi-tema .btn-close {
+    filter: invert(1);
+}
+
+.modal-atraksi-tema .modal-body {
+    padding: 22px;
+}
+
+.modal-atraksi-img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 12px;
+    display: block;
+    margin: 0 auto 16px;
+    background-color: #f5f0e6;
+}
+
+.modal-atraksi-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.badge-atraksi-kategori {
+    background-color: #7a0c0c;
+    color: #ffd966;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 20px;
+}
+
+.modal-atraksi-harga {
+    background-color: #fff3cd;
+    color: #8a6300;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 5px 14px;
+    border-radius: 20px;
+}
+
+.modal-atraksi-desc {
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+.modal-atraksi-tema .modal-footer {
+    border: none;
+    padding: 16px 22px 22px;
 }

@@ -30,25 +30,39 @@
 </section>
 
    <section class="destinasi" id="daftar-destinasi">
-        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
-            <h2 class="mb-0">Daftar Destinasi</h2>
-            @if(Auth::check() && Auth::user()->role === 'admin')
-                <a href="{{ route('destinasi.create') }}" class="btn-tema">
-                    <i class="bi bi-plus-lg"></i> Tambah Destinasi
-                </a>
-            @endif
-        </div>
+        <div class="text-center mb-2">
+    <h2 class="mb-0">Daftar Destinasi</h2>
+    @if(Auth::check() && Auth::user()->role === 'admin')
+        <a href="{{ route('destinasi.create') }}" class="btn-tema mt-3 d-inline-block">
+            <i class="bi bi-plus-lg"></i> Tambah Destinasi
+        </a>
+    @endif
+</div>
 
-    <p class="sub-judul">
-    Cari dan temukan destinasi wisata terbaik di Kota Palembang.
-    </p>
-        <form action="{{ route('destinasi') }}" method="GET" class="mb-5">
-    <div class="input-group">
-        <input type="text" name="cari" class="form-control input-cari-tema"
-               placeholder="Cari nama destinasi..." value="{{ $keyword ?? '' }}">
-        <button type="submit" class="btn btn-cari-tema">Cari</button>
-    </div>
+<p class="sub-judul text-center">
+Cari dan temukan destinasi wisata terbaik di Kota Palembang.
+</p>
+    <form action="{{ route('destinasi') }}" method="GET" class="mb-5 mx-auto" style="max-width: 600px;">
+<div class="input-group">
+    <input type="text" name="cari" class="form-control input-cari-tema"
+           placeholder="Cari nama destinasi..." value="{{ $keyword ?? '' }}">
+    <button type="submit" class="btn btn-cari-tema">Cari</button>
+</div>
 </form>
+
+<div class="filter-kategori-wrap mb-4 justify-content-center">
+    <a href="{{ route('destinasi', array_filter(['cari' => $keyword])) }}"
+       class="btn-kategori-pill {{ !$kategoriId ? 'aktif' : '' }}">
+        Semua
+    </a>
+    @foreach ($kategoriList as $kategori)
+        <a href="{{ route('destinasi', array_filter(['cari' => $keyword, 'kategori' => $kategori->id])) }}"
+           class="btn-kategori-pill {{ $kategoriId == $kategori->id ? 'aktif' : '' }}">
+            {{ $kategori->nama_kategori }}
+        </a>
+    @endforeach
+</div>
+
 
         <div class="kartu-container">
             @forelse ($destinasiList as $destinasi)
@@ -62,8 +76,16 @@
                  <img src="{{ asset('storage/' . $destinasi->gambar) }}" alt="Foto {{ $destinasi->nama }}">
               </div>
                  <h3>{{ $destinasi->nama }}</h3>
-                    <p>{{ $destinasi->deskripsi }}</p>
+
+@if($destinasi->kategoriData)
+    <span class="badge bg-secondary">
+        {{ $destinasi->kategoriData->nama_kategori }}
+    </span>
+@endif
+
+<p>{{ $destinasi->deskripsi }}</p>
                   @if($bukaSekarang)
+                  
                 <span class="status-buka">🟢 Buka</span>
             @else
     <span class="status-tutup">🔴 Tutup</span>

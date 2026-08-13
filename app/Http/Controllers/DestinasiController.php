@@ -4,38 +4,51 @@ namespace App\Http\Controllers;
 
 use App\Models\Destinasi;
 use Illuminate\Http\Request;
-use App\Models\Atraksi;
+use App\Models\Kategori;
 class DestinasiController extends Controller
 {
-    public function index(Request $request)
+   public function index(Request $request)
 {
     $keyword = $request->input('cari');
-
+    $kategoriId = $request->input('kategori');
+ 
     $destinasiList = Destinasi::when($keyword, function ($query) use ($keyword) {
             $query->where('nama', 'like', '%' . $keyword . '%');
         })
+        ->when($kategoriId, function ($query) use ($kategoriId) {
+            $query->where('kategori_id', $kategoriId);
+        })
+        ->with('kategoriData')
         ->latest()
-        ->paginate(2);
-
-    return view('destinasi', compact('destinasiList', 'keyword'));
+        ->paginate(4)
+        ->appends($request->query());
+ 
+    $kategoriList = Kategori::all();
+ 
+    return view('destinasi', compact('destinasiList', 'keyword', 'kategoriId', 'kategoriList'));
 }
+
     public function show($id)
     {
-        $destinasi = Destinasi::with(['atraksi', 'ulasan.user'])->findOrFail($id);
+
+        $destinasi = Destinasi::with(['atraksi', 'ulasan.user', 'kategoriData'])->findOrFail($id);
 
         return view('destinasi-detail', [
             'destinasi' => $destinasi,
         ]);
     }
 
-    public function create()
-    {
-        return view('destinasi-create');
-    }
+   public function create()
+{
+    $kategoriList = Kategori::all();
+    return view('destinasi-create', compact('kategoriList'));
+}
+
 
     public function store(Request $request)
     {
         $validated = $request->validate([
+            'kategori_id' => 'required|exists:kategori,id', 
             'nama'       => 'required|string|min:3|max:150',
             'deskripsi'  => 'required|string|min:10',
             'gambar'     => 'nullable|image|max:2048',
@@ -79,16 +92,19 @@ class DestinasiController extends Controller
     }
 
     public function edit($id)
-    {
-        $destinasi = Destinasi::findOrFail($id);
-        return view('destinasi-edit', compact('destinasi'));
-    }
+{
+    $destinasi = Destinasi::findOrFail($id);
+    $kategoriList = Kategori::all();
+    return view('destinasi-edit', compact('destinasi', 'kategoriList'));
+}
+
 
     public function update(Request $request, $id)
 {
     $destinasi = Destinasi::findOrFail($id);
 
     $validated = $request->validate([
+        'kategori_id' => 'nullable|exists:kategori,id',
         'nama'       => 'required|string|min:3|max:150',
         'deskripsi'  => 'required|string|min:10',
         'gambar'    => 'nullable|image|max:2048',
