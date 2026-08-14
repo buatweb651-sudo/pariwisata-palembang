@@ -15,7 +15,21 @@
 
             <div class="col-lg-6">
                 <h2>Kirim Pesan</h2>
-                <form class="kontak-form">
+                @if (session('success'))
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul class="mb-0">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form action="{{ route('kontak.send') }}" method="POST">
+                    @csrf
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
                         <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukkan nama Anda">
@@ -24,10 +38,10 @@
                         <label for="email" class="form-label">Email</label>
                         <input type="email" id="email" name="email" class="form-control" placeholder="Masukkan email Anda">
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label for="subjek" class="form-label">Subjek <span class="opsional">(opsional)</span></label>
                         <input type="text" id="subjek" name="subjek" class="form-control" placeholder="Contoh: Tanya jadwal wisata">
-                    </div>
+                    </div> --}}
                     <div class="mb-3">
                         <label for="pesan" class="form-label">Pesan</label>
                         <textarea id="pesan" name="pesan" rows="4" class="form-control" placeholder="Tulis pesan Anda"></textarea>

@@ -263,7 +263,7 @@
 
             </div>
 
-        </div>
+     </div>
 
     </div>
 
@@ -271,9 +271,34 @@
 
 
 {{-- =========================
-     DESTINASI TERPOPULER
+     GRAFIK PERTUMBUHAN USER
 ========================= --}}
-<div class="dashboard-card">
+<div class="dashboard-card mb-4">
+
+    <div class="card-header-custom">
+        <div>
+            <h5>
+                <i class="bi bi-graph-up-arrow"></i>
+                Pertumbuhan User
+            </h5>
+            <p>Jumlah user baru 7 hari terakhir</p>
+        </div>
+    </div>
+
+    <div style="padding: 1.25rem; position: relative; height: 280px;">
+        <canvas id="userGrowthChart"></canvas>
+    </div>
+
+</div>
+
+
+{{-- =========================
+     DESTINASI TERPOPULER + ULASAN TERBARU
+========================= --}}
+<div class="row g-4 mb-4">
+
+    <div class="col-lg-7">
+    <div class="dashboard-card h-100">  
 
     <div class="card-header-custom">
         <div>
@@ -324,7 +349,7 @@
         </div>
 
 
-        <div class="popular-item">
+       <div class="popular-item">
             <div class="rank rank-three">3</div>
 
             <div class="popular-content">
@@ -340,7 +365,80 @@
 
     </div>
 
+    </div>
+    </div>
+
+
+    <div class="col-lg-5">
+    <div class="dashboard-card h-100">
+
+        <div class="card-header-custom">
+            <div>
+                <h5>
+                    <i class="bi bi-chat-square-text-fill"></i>
+                    Ulasan Terbaru
+                </h5>
+                <p>Ulasan terbaru dari pengguna</p>
+            </div>
+        </div>
+
+        <div class="review-list">
+            @forelse ($ulasanTerbaru as $ulasan)
+                <div class="review-item">
+                    <div class="review-stars">
+                        @for ($i = 1; $i <= 5; $i++)
+                            <i class="bi bi-star-fill{{ $i > $ulasan->rating ? ' star-empty' : '' }}"></i>
+                        @endfor
+                    </div>
+                    <p class="review-text">"{{ $ulasan->komentar }}"</p>
+                    <div class="review-meta">
+                        — {{ $ulasan->user->name ?? 'Pengguna' }} · {{ $ulasan->destinasi->nama ?? '-' }}
+                    </div>
+                </div>
+            @empty
+                <p class="text-muted small px-3 py-3 mb-0">Belum ada ulasan masuk.</p>
+            @endforelse
+        </div>
+
+    </div>
+    </div>
+
 </div>
+
+
+@if ($destinasiPerluPerhatian->count() > 0)
+{{-- =========================
+     DESTINASI PERLU DIPERHATIKAN
+========================= --}}
+<div class="dashboard-card mb-4">
+
+    <div class="card-header-custom">
+        <div>
+            <h5>
+                <i class="bi bi-exclamation-triangle-fill"></i>
+                Perlu Diperhatikan
+            </h5>
+            <p>Destinasi dengan data belum lengkap</p>
+        </div>
+    </div>
+
+    <div class="attention-list">
+        @foreach ($destinasiPerluPerhatian as $destinasi)
+            <div class="attention-item">
+                <i class="bi bi-exclamation-circle"></i>
+                <div>
+                    <strong>{{ $destinasi->nama }}</strong>
+                    <span>
+                        @if (empty($destinasi->gambar)) Belum ada foto. @endif
+                        @if (empty($destinasi->harga_tiket)) Harga tiket belum diisi. @endif
+                    </span>
+                </div>
+            </div>
+        @endforeach
+    </div>
+
+</div>
+@endif
 
 
 <style>
@@ -719,6 +817,100 @@
    RESPONSIVE
 ========================= */
 
+/* =========================
+   GRAFIK
+========================= */
+
+#userGrowthChart {
+    max-height: 260px;
+}
+
+
+/* =========================
+   ULASAN TERBARU
+========================= */
+
+.review-list {
+    padding: 0.5rem 1.25rem 1.25rem;
+}
+
+.review-item {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid #f1eee8;
+}
+
+.review-item:last-child {
+    border-bottom: none;
+}
+
+.review-stars {
+    color: #C9A227;
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+}
+
+.review-stars .star-empty {
+    color: #e5e0d3;
+}
+
+.review-text {
+    color: #555;
+    font-size: 0.82rem;
+    font-style: italic;
+    margin: 0 0 4px;
+}
+
+.review-meta {
+    color: #999;
+    font-size: 0.72rem;
+}
+
+
+/* =========================
+   PERLU DIPERHATIKAN
+========================= */
+
+.attention-list {
+    padding: 0.5rem 1.25rem 1.25rem;
+}
+
+.attention-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f1eee8;
+}
+
+.attention-item:last-child {
+    border-bottom: none;
+}
+
+.attention-item i {
+    color: #C9A227;
+    font-size: 1rem;
+    margin-top: 2px;
+}
+
+.attention-item strong {
+    display: block;
+    color: #333;
+    font-size: 0.82rem;
+}
+
+.attention-item span {
+    display: block;
+    color: #999;
+    font-size: 0.72rem;
+    margin-top: 2px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
 @media (max-width: 768px) {
 
     .welcome-card {
@@ -741,5 +933,40 @@
 }
 
 </style>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+    const ctxUserGrowth = document.getElementById('userGrowthChart');
+
+    new Chart(ctxUserGrowth, {
+        type: 'line',
+        data: {
+            labels: @json($userGrowthLabels),
+            datasets: [{
+                label: 'User Baru',
+                data: @json($userGrowthData),
+                borderColor: '#7A1E1E',
+                backgroundColor: 'rgba(122, 30, 30, 0.08)',
+                tension: 0.35,
+                fill: true,
+                pointBackgroundColor: '#C9A227',
+                pointRadius: 4,
+            }]
+        },
+       options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { stepSize: 1 }
+                }
+            }
+        }
+    });
+</script>
 
 @endsection

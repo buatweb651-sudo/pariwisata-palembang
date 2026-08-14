@@ -1,20 +1,26 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('title', 'Kelola Kategori')
 @section('content')
-<div class="container my-5">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('beranda') }}">Beranda</a></li>
-            <li class="breadcrumb-item active">Kelola Kategori</li>
-        </ol>
-    </nav>
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2>Daftar Kategori</h2>
-        <a href="{{ route('kategori.create') }}" class="btn btn-primary">+ Tambah Kategori</a>
-    </div>
-    <table class="table table-bordered bg-white">
+
+<nav class="kategori-breadcrumb mb-3">
+    <a href="{{ route('beranda') }}">Beranda</a> / <span class="text-muted">Kelola Kategori</span>
+</nav>
+
+<div class="kategori-header">
+    <h4>Daftar Kategori</h4>
+    <a href="{{ route('kategori.create') }}" class="btn-tambah-kategori">
+        <i class="bi bi-plus-lg"></i> Tambah Kategori
+    </a>
+</div>
+
+<div class="kategori-card">
+    <table class="table table-kategori mb-0">
         <thead>
-            <tr><th style="width:60px;">No</th><th>Nama Kategori</th><th style="width:160px;">Aksi</th></tr>
+            <tr>
+                <th style="width:60px;">No</th>
+                <th>Nama Kategori</th>
+                <th style="width:120px;">Aksi</th>
+            </tr>
         </thead>
         <tbody>
             @forelse ($kategoriList as $i => $kategori)
@@ -22,19 +28,24 @@
                     <td>{{ $i + 1 }}</td>
                     <td>{{ $kategori->nama_kategori }}</td>
                     <td>
-                        <a href="{{ route('kategori.edit', $kategori->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="{{ route('kategori.edit', $kategori->id) }}" class="btn-aksi-icon btn-edit-kategori" title="Edit">
+                            <i class="bi bi-pencil"></i>
+                        </a>
                         <form action="{{ route('kategori.destroy', $kategori->id) }}" method="POST" class="d-inline"
                               onsubmit="return confirm('Yakin hapus kategori ini?')">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                            <button type="submit" class="btn-aksi-icon btn-hapus-kategori" title="Hapus">
+                                <i class="bi bi-trash"></i>
+                            </button>
                         </form>
                     </td>
                 </tr>
             @empty
-                <tr><td colspan="3" class="text-center text-muted">Belum ada kategori.</td></tr>
+                <tr><td colspan="3" class="text-center text-muted py-4">Belum ada kategori.</td></tr>
             @endforelse
         </tbody>
     </table>
 </div>
+
 @endsection

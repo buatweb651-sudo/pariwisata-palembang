@@ -103,8 +103,49 @@ Cari dan temukan destinasi wisata terbaik di Kota Palembang.
     </div>
 @endforelse
         </div>
-        <div class="d-flex justify-content-center mt-4 pagination-tema">
+       <div class="d-flex justify-content-center mt-4 pagination-tema">
     {{ $destinasiList->appends(['cari' => $keyword])->links('pagination::bootstrap-5') }}
 </div>
+
+    </section>
+
+    <section class="kenapa-wisata py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <p class="section-eyebrow">Kenapa Palembang?</p>
+                <h2 class="section-title">Alasan Wajib Berkunjung ke Palembang</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3 col-6">
+                    <div class="kenapa-card text-center p-4">
+                        <div class="kenapa-icon mb-3">🏛️</div>
+                        <h5>Kaya Sejarah</h5>
+                        <p class="mb-0">Jejak Kerajaan Sriwijaya masih terasa di setiap sudut kota, dari museum hingga situs bersejarah.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="kenapa-card text-center p-4">
+                        <div class="kenapa-icon mb-3">🍜</div>
+                        <h5>Surga Kuliner</h5>
+                        <p class="mb-0">Pempek, tekwan, dan mie celor jadi alasan wajib untuk singgah dan mencicipi.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="kenapa-card text-center p-4">
+                        <div class="kenapa-icon mb-3">🌊</div>
+                        <h5>Ikon Sungai Musi</h5>
+                        <p class="mb-0">Jembatan Ampera dan panorama sungai jadi latar yang tak terlupakan.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="kenapa-card text-center p-4">
+                        <div class="kenapa-icon mb-3">🛍️</div>
+                        <h5>Belanja Khas</h5>
+                        <p class="mb-0">Songket dan oleh-oleh tradisional siap dibawa pulang sebagai kenang-kenangan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 @endsection

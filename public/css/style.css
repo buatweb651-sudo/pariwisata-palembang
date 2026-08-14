@@ -364,7 +364,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
 }
 
 
@@ -3123,4 +3122,46 @@ body {
 .modal-atraksi-tema .modal-footer {
     border: none;
     padding: 16px 22px 22px;
+}
+
+.kenapa-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 100%;
+}
+
+.kenapa-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.kenapa-icon {
+    font-size: 2.5rem;
+}
+
+.kenapa-card h5 {
+    font-weight: 700;
+    color: #7a1f1f;
+    margin-bottom: 0.5rem;
+}
+
+.kenapa-card p {
+    color: #555;
+    font-size: 0.9rem;
+}
+
+/* Fix tinggi kartu destinasi biar sama rata */
+.kartu {
+    display: flex;
+    flex-direction: column;
+}
+
+.kartu p {
+    flex-grow: 1;
+}
+
+.kartu .btn-pink {
+    margin-top: auto;
 }

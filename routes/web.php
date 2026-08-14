@@ -10,6 +10,8 @@ use App\Http\Controllers\AuthController;
  use App\Http\Controllers\ProfilController;
  use App\Http\Controllers\AdminController;
  use App\Http\Controllers\KategoriController;
+ use App\Http\Controllers\KontakController;
+ use Illuminate\Support\Facades\Mail;
 
 
 /*
@@ -100,9 +102,10 @@ Route::get('/tentang', function () {
     return view('tentang');
 })->name('tentang');
 
-Route::get('/kontak', function () {
-    return view('kontak');
-})->name('kontak');
+Route::get('/kontak', [KontakController::class, 'index'])->name('kontak');
+
+Route::post('/kontak', [KontakController::class, 'send'])->name('kontak.send');
+
 
 
 

@@ -91,11 +91,82 @@
             display: flex; align-items: center; justify-content: center;
             font-size: 0.8rem; font-weight: 700;
         }
+
+        .kategori-breadcrumb { font-size: 0.85rem; }
+        .kategori-breadcrumb a { color: var(--maroon); text-decoration: none; }
+        .kategori-breadcrumb a:hover { text-decoration: underline; }
+
+        .kategori-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .kategori-header h4 {
+            color: var(--maroon-dark);
+            font-weight: 700;
+            margin: 0;
+        }
+        .btn-tambah-kategori {
+            background: var(--gold);
+            color: var(--maroon-dark);
+            font-weight: 600;
+            border: none;
+            padding: 0.5rem 1.1rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.2s ease;
+        }
+        .btn-tambah-kategori:hover {
+            background: var(--gold-light);
+            color: var(--maroon-dark);
+        }
+
+        .kategori-card {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .table-kategori { margin: 0; }
+        .table-kategori thead th {
+            background: var(--bg-warm);
+            color: var(--maroon-dark);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            font-weight: 600;
+            border-bottom: 1px solid #eee0c4;
+            padding: 0.85rem 1rem;
+        }
+        .table-kategori tbody td {
+            padding: 0.85rem 1rem;
+            vertical-align: middle;
+            border-bottom: 1px solid #f4ecd8;
+            color: #444;
+        }
+        .table-kategori tbody tr:last-child td { border-bottom: none; }
+        .table-kategori tbody tr:hover { background: #fdf6e3; }
+
+        .btn-aksi-icon {
+            width: 32px; height: 32px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            font-size: 0.9rem;
+        }
+        .btn-edit-kategori { background: #fdf3d8; color: var(--maroon-dark); }
+        .btn-edit-kategori:hover { background: var(--gold-light); color: var(--maroon-dark); }
+        .btn-hapus-kategori { background: #fbe4e4; color: #a12525; }
+        .btn-hapus-kategori:hover { background: #f3caca; color: #a12525; }
     </style>
 </head>
 <body>
     <div class="sidebar">
-        <h5 class="mb-4">Siak Wisata <small class="d-block">Admin Panel</small></h5>
+        <h5 class="mb-4">Wisata Pelembang <small class="d-block">Admin Panel</small></h5>
         <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
             <i class="bi bi-speedometer2"></i> Dashboard
         </a>
@@ -104,7 +175,9 @@
         </a>
         <a href="{{ route('atraksi') }}" class="{{ request()->routeIs('atraksi*') ? 'active' : '' }}">
             <i class="bi bi-stars"></i> Kelola Atraksi
-            <a href="{{ route('kategori') }}">Kelola Kategori</a>
+        </a>
+        <a href="{{ route('kategori') }}" class="{{ request()->routeIs('kategori*') ? 'active' : '' }}">
+            <i class="bi bi-tags"></i> Kelola Kategori
         </a>
         <a href="{{ route('user.index') }}" class="{{ request()->routeIs('user*') ? 'active' : '' }}">            <i class="bi bi-people"></i> Kelola User
         </a>

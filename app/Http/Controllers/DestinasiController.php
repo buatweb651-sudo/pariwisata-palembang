@@ -20,7 +20,7 @@ class DestinasiController extends Controller
         })
         ->with('kategoriData')
         ->latest()
-        ->paginate(4)
+        ->paginate(3)
         ->appends($request->query());
  
     $kategoriList = Kategori::all();
